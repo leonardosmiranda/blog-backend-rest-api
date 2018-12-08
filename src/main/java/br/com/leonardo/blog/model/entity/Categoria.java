@@ -1,13 +1,10 @@
 package br.com.leonardo.blog.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.time.LocalDateTime;
 
 /**
  * Entidade que repersenta uma categoria.
@@ -15,7 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "categorias")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"dataCriacao", "dataAlteracao"}, allowGetters = true)
+@JsonIgnoreProperties(value = {"base"}, allowGetters = true)
 public class Categoria {
 
     @Id
@@ -28,14 +25,8 @@ public class Categoria {
     @Column(name="nome", nullable = false)
     private String nome;
 
-
-    @Column(name="data_criacao", nullable = false)
-    @CreatedDate
-    private LocalDateTime dataCriacao;
-
-    @Column(name="data_alteracao", nullable = false)
-    @LastModifiedDate
-    private LocalDateTime dataAlteracao;
+    @Embedded
+    private EntidadeBase base;
 
     /**
      * Construtor Padrão.
@@ -57,11 +48,7 @@ public class Categoria {
 
     public void setNome(String nome) { this.nome = nome; }
 
-    public LocalDateTime getDataCriacao() { return dataCriacao; }
+    public EntidadeBase getBase() { return base; }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) { this.dataCriacao = dataCriacao; }
-
-    public LocalDateTime getDataAlteracao() { return dataAlteracao; }
-
-    public void setDataAlteracao(LocalDateTime dataAlteracao) { this.dataAlteracao = dataAlteracao; }
+    public void setBase(EntidadeBase base) { this.base = base; }
 }
