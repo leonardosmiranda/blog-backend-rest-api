@@ -1,6 +1,6 @@
-package br.com.leonardo.blog.model.entity;
+package br.com.leonardo.blog.model.entidade;
 
-import br.com.leonardo.blog.model.domain.EStatusArtigo;
+import br.com.leonardo.blog.model.dominio.EStatusArtigo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -66,7 +66,7 @@ public class Artigo {
      * @param titulo o título do artigo
      * @param texto o texto do artigo
      * @param categoria a categoria do artigo
-     * @param tags As tags do artigo
+     * @param tags As autorizacoes do artigo
      * @param usuario o usuario que criou o artigo
      */
     public Artigo(String titulo, String texto, Categoria categoria, Set<Tag> tags, Usuario usuario) {

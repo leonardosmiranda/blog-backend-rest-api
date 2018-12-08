@@ -1,4 +1,4 @@
-package br.com.leonardo.blog.model.entity;
+package br.com.leonardo.blog.model.entidade;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -45,7 +45,7 @@ public class Usuario {
             joinColumns = { @JoinColumn(name = "usuario_id") },
             inverseJoinColumns = { @JoinColumn(name = "autorizacao_id") }
     )
-    Set<Tag> tags = new HashSet<>();
+    Set<Autorizacao> autorizacoes = new HashSet<>();
 
 
     @Embedded
@@ -72,9 +72,9 @@ public class Usuario {
 
     public void setSenha(String senha) { this.senha = senha; }
 
-    public Set<Tag> getTags() { return tags; }
+    public Set<Autorizacao> getAutorizacoes() { return autorizacoes; }
 
-    public void setTags(Set<Tag> tags) { this.tags = tags; }
+    public void setAutorizacoes(Set<Autorizacao> autorizacoes) { this.autorizacoes = autorizacoes; }
 
     public EntidadeBase getBase() { return base; }
 

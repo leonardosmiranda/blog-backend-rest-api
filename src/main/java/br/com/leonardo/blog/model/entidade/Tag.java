@@ -1,4 +1,4 @@
-package br.com.leonardo.blog.model.entity;
+package br.com.leonardo.blog.model.entidade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -9,7 +9,7 @@ import java.util.Set;
  * Entidade que representa uma tag de um artigo.
  */
 @Entity
-@Table(name = "tags")
+@Table(name = "autorizacoes")
 public class Tag {
     @Id
     @SequenceGenerator(name="seq_tags",sequenceName="seq_tags", allocationSize=1)
@@ -21,15 +21,15 @@ public class Tag {
     @Column(name="nome", nullable = false)
     private String nome;
 
-    @ManyToMany(mappedBy = "tags")
+    @ManyToMany(mappedBy = "autorizacoes")
     private Set<Artigo> artigos = new HashSet<>();
 
     /**
      * Construtor Padrão.
      */
-    private Tag() {}
+    public Tag() {}
 
-    private Tag(String nome) { this.nome = nome; }
+    public Tag(String nome) { this.nome = nome; }
 
     public Long getId() { return id; }
 

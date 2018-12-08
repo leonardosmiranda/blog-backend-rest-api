@@ -1,4 +1,4 @@
-package br.com.leonardo.blog.model.entity;
+package br.com.leonardo.blog.model.entidade;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

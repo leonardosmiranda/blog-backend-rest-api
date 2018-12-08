@@ -1,4 +1,4 @@
-package br.com.leonardo.blog.model.domain;
+package br.com.leonardo.blog.model.dominio;
 
 /**
  * Enum com os status de um artigo.

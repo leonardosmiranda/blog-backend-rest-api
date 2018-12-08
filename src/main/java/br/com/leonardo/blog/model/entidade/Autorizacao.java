@@ -1,4 +1,4 @@
-package br.com.leonardo.blog.model.entity;
+package br.com.leonardo.blog.model.entidade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -25,9 +25,14 @@ public class Autorizacao {
     /**
      * Construtor Padrão.
      */
-    private Autorizacao() {}
+    public Autorizacao() {}
 
-    private Autorizacao(String nome) { this.nome = nome; }
+    /**
+     * Contrutor.
+     *
+     * @param nome o nome da autorização
+     */
+    public Autorizacao(String nome) { this.nome = nome; }
 
     public Long getId() { return id; }
 
