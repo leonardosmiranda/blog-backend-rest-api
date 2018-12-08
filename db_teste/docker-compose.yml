@@ -1,0 +1,11 @@
+postgres:
+  container_name: postgres-blog
+  image: postgres:latest
+  environment:
+    - POSTGRES_USER=blog_user
+    - POSTGRES_PASSWORD=blog123
+    - POSTGRES_DB=blog_db
+  volumes:
+    - ./postgres-data:/var/lib/postgresql/data
+  ports:
+    - "5433:5432"
