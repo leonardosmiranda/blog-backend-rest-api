@@ -1,14 +1,15 @@
 package br.com.leonardo.blog.model.servico;
 
+import br.com.leonardo.blog.excecoes.BlogRuntimeEx;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Implementação dos métodos básicos de serviço.
  */
-@Service
 public class BaseServico<T, S> implements IServico<T> {
 
     protected S repositorio;
@@ -34,7 +35,13 @@ public class BaseServico<T, S> implements IServico<T> {
 
     @Override
     public T buscarPorId(Object id) {
-        return (T) getRepositorioBase().findById(id);
+        Optional<T> t = getRepositorioBase().findById(id);
+
+        if (t.isPresent()) {
+            return t.get();
+        }
+
+        throw new BlogRuntimeEx("O objeto informado não pode ser encontrado.");
     }
 
     @Override

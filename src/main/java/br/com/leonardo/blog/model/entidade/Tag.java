@@ -21,7 +21,7 @@ public class Tag {
     @Column(name="nome", nullable = false)
     private String nome;
 
-    @ManyToMany(mappedBy = "autorizacoes")
+    @ManyToMany(mappedBy = "tags")
     private Set<Artigo> artigos = new HashSet<>();
 
     /**

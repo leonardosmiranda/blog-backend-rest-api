@@ -21,12 +21,12 @@ public class Categoria {
     @Column(name="id", unique=true, nullable=false)
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "O nome da categoria não pode estar vazio")
     @Column(name="nome", nullable = false)
     private String nome;
 
     @Embedded
-    private EntidadeBase base;
+    private EntidadeBase base = new EntidadeBase();
 
     /**
      * Construtor Padrão.

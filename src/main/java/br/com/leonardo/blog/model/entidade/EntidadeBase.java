@@ -22,4 +22,20 @@ public class EntidadeBase {
     @NotNull
     @LastModifiedDate
     protected LocalDateTime alteradoEm;
+
+    public LocalDateTime getCriadoEm() {
+        return criadoEm;
+    }
+
+    public void setCriadoEm(LocalDateTime criadoEm) {
+        this.criadoEm = criadoEm;
+    }
+
+    public LocalDateTime getAlteradoEm() {
+        return alteradoEm;
+    }
+
+    public void setAlteradoEm(LocalDateTime alteradoEm) {
+        this.alteradoEm = alteradoEm;
+    }
 }

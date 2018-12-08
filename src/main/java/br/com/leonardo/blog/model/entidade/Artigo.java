@@ -53,7 +53,7 @@ public class Artigo {
     private Usuario usuario;
 
     @Embedded
-    private EntidadeBase base;
+    private EntidadeBase base = new EntidadeBase();
 
     /**
      * Construtor Padrão.

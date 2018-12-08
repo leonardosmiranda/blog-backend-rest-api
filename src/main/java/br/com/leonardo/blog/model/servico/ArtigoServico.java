@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ArtigoServico extends BaseServico<Artigo, ArtigoRepositorio> implements IServico<Artigo>  {
 
-    @Autowired
     public ArtigoServico(ArtigoRepositorio repositorio) {
         super(repositorio);
     }

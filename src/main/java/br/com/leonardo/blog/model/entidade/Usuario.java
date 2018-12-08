@@ -49,7 +49,7 @@ public class Usuario {
 
 
     @Embedded
-    private EntidadeBase base;
+    private EntidadeBase base = new EntidadeBase();
 
     /**
      * Construtor Padrão.
