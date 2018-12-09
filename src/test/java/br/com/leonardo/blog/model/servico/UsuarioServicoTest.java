@@ -2,13 +2,14 @@ package br.com.leonardo.blog.model.servico;
 
 import br.com.leonardo.blog.model.entidade.Usuario;
 import br.com.leonardo.blog.model.repositorio.UsuarioRepositorio;
-import br.com.leonardo.blog.model.repositorio.UsuarioRepositorio;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.Optional;
 
 /**
  * Classe de Testes do serviço de usuário.
@@ -51,6 +52,8 @@ public class UsuarioServicoTest {
 
     @Test
     public void buscarPorId() {
+        Mockito.when(repositorio.findById(1L)).thenReturn(Optional.of(new Usuario()));
+
         servico.buscarPorId(1L);
 
         Mockito.verify(repositorio).findById(1L);

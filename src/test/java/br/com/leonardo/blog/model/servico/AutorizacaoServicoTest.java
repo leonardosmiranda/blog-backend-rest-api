@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.Optional;
+
 /**
  * Classe de Testes do serviço de autorização.
  */
@@ -50,6 +52,8 @@ public class AutorizacaoServicoTest {
 
     @Test
     public void buscarPorId() {
+        Mockito.when(repositorio.findById(1L)).thenReturn(Optional.of(new Autorizacao()));
+
         servico.buscarPorId(1L);
 
         Mockito.verify(repositorio).findById(1L);

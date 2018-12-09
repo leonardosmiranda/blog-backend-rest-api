@@ -1,8 +1,6 @@
 package br.com.leonardo.blog.model.servico;
 
-import br.com.leonardo.blog.model.entidade.Autorizacao;
 import br.com.leonardo.blog.model.entidade.Categoria;
-import br.com.leonardo.blog.model.repositorio.AutorizacaoRepositorio;
 import br.com.leonardo.blog.model.repositorio.CategoriaRepositorio;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.Optional;
 
 /**
  * Classe de Testes do serviço de categoria.
@@ -52,6 +52,8 @@ public class CategoriaServicoTest {
 
     @Test
     public void buscarPorId() {
+        Mockito.when(repositorio.findById(1L)).thenReturn(Optional.of(new Categoria()));
+
         servico.buscarPorId(1L);
 
         Mockito.verify(repositorio).findById(1L);
