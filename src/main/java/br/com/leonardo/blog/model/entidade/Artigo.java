@@ -48,10 +48,6 @@ public class Artigo {
     @Column(name="status")
     private EStatusArtigo status;
 
-    @ManyToOne
-    @JoinColumn(name="usuario_id", nullable=false)
-    private Usuario usuario;
-
     @Embedded
     private EntidadeBase base = new EntidadeBase();
 
@@ -67,15 +63,13 @@ public class Artigo {
      * @param texto o texto do artigo
      * @param categoria a categoria do artigo
      * @param tags As autorizacoes do artigo
-     * @param usuario o usuario que criou o artigo
      */
-    public Artigo(String titulo, String texto, Categoria categoria, Set<Tag> tags, Usuario usuario) {
+    public Artigo(String titulo, String texto, Categoria categoria, Set<Tag> tags) {
         this.titulo = titulo;
         this.texto = texto;
         this.categoria = categoria;
         this.tags = tags;
         this.status = EStatusArtigo.RASCUNHO;
-        this.usuario = usuario;
     }
 
     public Long getId() { return id; }
@@ -101,10 +95,6 @@ public class Artigo {
     public EStatusArtigo getStatus() { return status; }
 
     public void setStatus(EStatusArtigo status) { this.status = status; }
-
-    public Usuario getUsuario() { return usuario; }
-
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
 
     public EntidadeBase getBase() { return base; }
 

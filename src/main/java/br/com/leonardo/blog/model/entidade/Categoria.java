@@ -21,7 +21,7 @@ public class Categoria {
     @Column(name="id", unique=true, nullable=false)
     private Long id;
 
-    @NotEmpty(message = "O nome da categoria não pode estar vazio")
+    @NotEmpty(message = "O nome da categoria deve ser informado")
     @Column(name="nome", nullable = false)
     private String nome;
 

@@ -17,7 +17,7 @@ public class Tag {
     @Column(name="id", unique=true, nullable=false)
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "O nome da Tag deve ser informado")
     @Column(name="nome", nullable = false)
     private String nome;
 

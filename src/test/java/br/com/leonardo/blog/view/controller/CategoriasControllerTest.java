@@ -19,13 +19,13 @@ import java.util.List;
  * Classe de testes do controller de categoria.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class CategoriaControllerTest {
+public class CategoriasControllerTest {
 
     @Mock
     private CategoriaServico servico;
 
     @InjectMocks
-    private CategoriaController controller;
+    private CategoriasController controller;
 
     @Test
     public void testarListarTodas() {

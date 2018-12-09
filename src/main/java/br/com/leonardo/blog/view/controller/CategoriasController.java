@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/categorias")
-public class CategoriaController {
+public class CategoriasController {
 
     @Autowired
     private CategoriaServico servico;
