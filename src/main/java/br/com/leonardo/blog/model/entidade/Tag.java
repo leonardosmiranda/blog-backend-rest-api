@@ -29,7 +29,23 @@ public class Tag {
      */
     public Tag() {}
 
+    /**
+     * Construtor.
+     *
+     * @param nome o nome da tag
+     */
     public Tag(String nome) { this.nome = nome; }
+
+    /**
+     * Construtor.
+     *
+     * @param id o id da tag
+     * @param nome o nome da tag
+     */
+    public Tag(Long id, String nome) {
+        this.nome = nome;
+        this.id = id;
+    }
 
     public Long getId() { return id; }
 

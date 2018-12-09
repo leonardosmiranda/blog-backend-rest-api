@@ -1,5 +1,7 @@
 package br.com.leonardo.blog.view.dto;
 
+import br.com.leonardo.blog.model.entidade.Categoria;
+
 /**
  * Objeto de retorno da API que representa uma categoria.
  */
@@ -15,6 +17,12 @@ public class CategoriaDTO {
         this.criadoEm = criadoEm;
         this.alteradoEm = alteradoEm;
     }
+
+    public CategoriaDTO(Categoria categoria) {
+        this.id = categoria.getId();
+        this.nome = categoria.getNome();
+    }
+
 
     public Long getId() {
         return id;

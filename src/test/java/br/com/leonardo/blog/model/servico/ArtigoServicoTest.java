@@ -1,7 +1,9 @@
 package br.com.leonardo.blog.model.servico;
 
 import br.com.leonardo.blog.model.entidade.Artigo;
+import br.com.leonardo.blog.model.entidade.Categoria;
 import br.com.leonardo.blog.model.repositorio.ArtigoRepositorio;
+import br.com.leonardo.blog.model.repositorio.CategoriaRepositorio;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -20,13 +22,22 @@ public class ArtigoServicoTest {
     @Mock
     private ArtigoRepositorio repositorio;
 
+    @Mock
+    private CategoriaServico categoriaServico;
+
     @InjectMocks
     private ArtigoServico servico;
 
     @Test
     public void inserir() {
 
+        Categoria categoria = new Categoria();
+        categoria.setId(1L);
+
+        Mockito.when(categoriaServico.buscarPorId(1L)).thenReturn(categoria);
+
         Artigo artigo = new Artigo();
+        artigo.setCategoria(categoria);
 
         servico.inserir(artigo);
 
@@ -35,7 +46,13 @@ public class ArtigoServicoTest {
 
     @Test
     public void atualizar() {
+        Categoria categoria = new Categoria();
+        categoria.setId(1L);
+
+        Mockito.when(categoriaServico.buscarPorId(1L)).thenReturn(categoria);
+
         Artigo artigo = new Artigo();
+        artigo.setCategoria(categoria);
 
         servico.atualizar(artigo);
 

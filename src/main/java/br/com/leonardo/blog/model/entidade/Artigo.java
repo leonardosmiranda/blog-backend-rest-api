@@ -6,6 +6,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,14 +25,15 @@ public class Artigo {
     @Column(name="id", unique=true, nullable=false)
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "O Título do artigo deve ser preenchido")
     @Column(name="titulo", nullable = false)
     private String titulo;
 
-    @NotEmpty
+    @NotEmpty(message = "O Texto do Artigo deve ser preenchido")
     @Column(name="texto", nullable = false)
     private String texto;
 
+    @NotNull(message = "A Categoria do Artigo deve ser preenchida")
     @ManyToOne
     @JoinColumn(name="categoria_id", nullable=false)
     private Categoria categoria;
@@ -44,6 +46,7 @@ public class Artigo {
     )
     private Set<Tag> tags = new HashSet<>();
 
+    @NotNull(message = "O Status do Artigo deve ser preenchido")
     @Enumerated
     @Column(name="status")
     private EStatusArtigo status;
