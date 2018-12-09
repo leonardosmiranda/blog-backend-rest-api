@@ -1,5 +1,6 @@
 package br.com.leonardo.blog.model.servico;
 
+import br.com.leonardo.blog.model.dominio.EStatusArtigo;
 import br.com.leonardo.blog.model.entidade.Artigo;
 import br.com.leonardo.blog.model.entidade.Categoria;
 import br.com.leonardo.blog.model.entidade.Tag;
@@ -7,9 +8,12 @@ import br.com.leonardo.blog.model.repositorio.ArtigoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
+@Transactional
 @Service
 public class ArtigoServico extends BaseServico<Artigo, ArtigoRepositorio> implements IServico<Artigo>  {
 
@@ -21,6 +25,10 @@ public class ArtigoServico extends BaseServico<Artigo, ArtigoRepositorio> implem
         super(repositorio);
         this.categoriaServico = categoriaServico;
         this.tagServico = tagServico;
+    }
+
+    public List<Artigo> listarArtigosPorStatus(EStatusArtigo status) {
+        return repositorio.listarPorStatus(status);
     }
 
     @Override

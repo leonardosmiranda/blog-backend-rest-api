@@ -15,6 +15,6 @@ import java.util.List;
 public interface ArtigoRepositorio extends JpaRepository<Artigo, Long> {
 
 
-    @Query("SELECT o FROM Artigo o WHERE o.status = ?1 order by o.base.criadoEm")
-    public List<Artigo> pesquisarPorStatus(EStatusArtigo status);
+    @Query("SELECT o FROM Artigo o WHERE o.status = ?1 order by o.base.criadoEm desc")
+    public List<Artigo> listarPorStatus(EStatusArtigo status);
 }

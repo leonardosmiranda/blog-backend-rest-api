@@ -1,5 +1,6 @@
 package br.com.leonardo.blog.view.controller;
 
+import br.com.leonardo.blog.model.dominio.EStatusArtigo;
 import br.com.leonardo.blog.model.entidade.Artigo;
 import br.com.leonardo.blog.model.servico.ArtigoServico;
 import br.com.leonardo.blog.view.dto.ArtigoDTO;
@@ -62,5 +63,11 @@ public class ArtigosController {
         servico.excluir(id);
     }
 
-
+    @GetMapping("/status/{status}")
+    public List<ArtigoDTO> listarPorStatus(@PathVariable EStatusArtigo status) {
+        return servico.listarArtigosPorStatus(status)
+                .stream()
+                .map(artigo -> new ArtigoDTO(artigo))
+                .collect(Collectors.toList());
+    }
 }

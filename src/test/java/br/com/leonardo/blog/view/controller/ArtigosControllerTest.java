@@ -117,4 +117,25 @@ public class ArtigosControllerTest {
 
         Mockito.verify(servico).excluir(1L);
     }
+
+    @Test
+    public void testarListarPorStatus() {
+        List<Artigo> artigosEntrada = new ArrayList<>();
+
+        Artigo artigo1 = getArtigoCompleto(1L, "Teste 1", "Texto do artigo");
+        Artigo artigo2 = getArtigoCompleto(2L, "Teste 2", "Texto do artigo");
+        Artigo artigo3 = getArtigoCompleto(3L, "Teste 3", "Texto do artigo");
+
+
+        artigosEntrada.add(artigo1);
+        artigosEntrada.add(artigo2);
+        artigosEntrada.add(artigo3);
+
+
+        Mockito.when(servico.listarArtigosPorStatus(EStatusArtigo.RASCUNHO)).thenReturn(artigosEntrada);
+
+        List<ArtigoDTO> artigos = controller.listarPorStatus(EStatusArtigo.RASCUNHO);
+
+        Assert.assertEquals(3, artigos.size());
+    }
 }
