@@ -1,9 +1,11 @@
 package br.com.leonardo.blog.model.servico;
 
+import br.com.leonardo.blog.excecoes.BlogRuntimeEx;
+import br.com.leonardo.blog.model.dominio.EStatusArtigo;
 import br.com.leonardo.blog.model.entidade.Artigo;
 import br.com.leonardo.blog.model.entidade.Categoria;
+import br.com.leonardo.blog.model.entidade.Tag;
 import br.com.leonardo.blog.model.repositorio.ArtigoRepositorio;
-import br.com.leonardo.blog.model.repositorio.CategoriaRepositorio;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -25,6 +27,9 @@ public class ArtigoServicoTest {
     @Mock
     private CategoriaServico categoriaServico;
 
+    @Mock
+    private TagServico tagServico;
+
     @InjectMocks
     private ArtigoServico servico;
 
@@ -35,9 +40,12 @@ public class ArtigoServicoTest {
         categoria.setId(1L);
 
         Mockito.when(categoriaServico.buscarPorId(1L)).thenReturn(categoria);
+        Mockito.when(tagServico.buscarPorId(1L)).thenReturn(new Tag(1L, "Tag 1"));
 
         Artigo artigo = new Artigo();
         artigo.setCategoria(categoria);
+        artigo.getTags().add(new Tag(1L,"Tag 1"));
+        artigo.getTags().add(new Tag("Tag 2"));
 
         servico.inserir(artigo);
 
@@ -76,11 +84,29 @@ public class ArtigoServicoTest {
         Mockito.verify(repositorio).findById(1L);
     }
 
+    @Test(expected = BlogRuntimeEx.class)
+    public void buscarPorIdInvalido() {
+        Mockito.when(repositorio.findById(1L)).thenReturn(Optional.empty());
+
+        servico.buscarPorId(1L);
+
+        Mockito.verify(repositorio).findById(1L);
+    }
+
+
     @Test
     public void testarListarTodos() {
         servico.listarTodos();
 
         Mockito.verify(repositorio).findAll();
     }
+
+    @Test
+    public void testarListarPorStatus() {
+        servico.listarArtigosPorStatus(EStatusArtigo.RASCUNHO);
+
+        Mockito.verify(repositorio).listarPorStatus(EStatusArtigo.RASCUNHO);
+    }
+
 
 }
