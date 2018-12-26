@@ -114,7 +114,6 @@ public class ArtigosControllerTest {
     @Test
     public void testarExcluir() {
         controller.excluir(1L);
-
         Mockito.verify(servico).excluir(1L);
     }
 
